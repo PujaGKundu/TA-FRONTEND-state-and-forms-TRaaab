@@ -1,6 +1,5 @@
 function MovieDetails(props) {
   let details = props.details;
-  let images = details.Images;
   return (
     <>
       <h2>{details.Title}</h2>
@@ -25,7 +24,6 @@ function MovieDetails(props) {
       <p>Plot: {details.Plot}</p>
       <h2>Images</h2>
       <div className="grid">
-        {console.log(images)}
         <img className="img" src={details.Images} alt="Movie Pic" />
       </div>
     </>
