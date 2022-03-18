@@ -6,40 +6,34 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: "",
+      active: "breakfast",
     };
   }
 
   handleActive = (menu) => {
     this.setState({
-      active: menu.toLowerCase(),
+      active: menu,
     });
   };
 
   render() {
-    let menuTypes = ["All", "Breakfast", "Lunch", "Shakes"];
-    let menuItem;
-    if (!this.state.active) {
-      menuItem = data.reduce((acc, item) => {
-        acc = acc.concat(item);
-        return acc;
-      }, []);
-    } else {
-      menuItem = data.find((item) => item.category === this.state.active);
-      console.log(this.state.active, menuItem);
-    }
+    let menuItem = data.reduce((acc, item) => {
+      acc = acc.concat(item);
+      return acc;
+    }, []);
+
     return (
       <>
         <h1>Our Menu</h1>
         <hr className="hr" />
         <ul className="flex">
-          {menuTypes.map((menu) => (
+          {data.map((menu) => (
             <li
-              key={menu}
+              key={menu.id}
               onClick={() => this.handleActive(menu)}
               className={menu === this.state.active ? "active" : ""}
             >
-              {menu}
+              {menu.category.toUpperCase()}
             </li>
           ))}
         </ul>
